@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ColomboNext</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3.0.2"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/index.css">
+</head>
+
+<body>
+  <header>
+    <h1>ColomboNext</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="navbar">
+      <a href="index.html" class="active">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="local_issues.html">Local Issues</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="events.html">Events</a>
+      <a href="feedback.html">Feedback</a>
+    </nav>
+  </header>
+  </header>
+  <section class="hero-section">
+    <video autoplay muted loop playsinline>
+      <source src="assets/images/hero-video.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="hero-content">
+      <h1>ColomboNext</h1>
+      <p>Shaping a smarter, cleaner, and more connected city through innovation and local solutions.</p>
+    </div>
+  </section>
+  <section id="about" class="about-section">
+    <h2>About ColomboNext</h2>
+    <p>
+      Colombo, the vibrant capital of Sri Lanka, is growing rapidly, but with that growth come serious urban challenges,
+      including traffic congestion, recurring floods, unmanaged waste, and increasing energy demands. I created
+      <strong>ColomboNext</strong> as a personal initiative to explore how smart, sustainable technologies can help
+      address these complex issues and improve the quality of life in our city.
+    </p>
+    <p>
+      This project showcases practical, tech-driven solutions such as AI-based traffic systems, real-time flood
+      monitoring, IoT-enabled smart waste bins, and solar energy optimization tools. My goal is to educate users, raise
+      awareness, and simulate how technology can transform everyday urban living. While the site focuses on the city of
+      Colombo as a whole, I have chosen to highlight <strong>Wellampitiya</strong>, my own locality to ensure that
+      often-overlooked neighborhoods are also part of the conversation around smart city development. Through
+      interactive tools, real data, and user feedback, I hope to inspire smarter, cleaner, and more connected urban
+      living.
+  </section>
+  <section id="problems">
+    <h2>Urban Challenges and Smart Solutions</h2>
+    <div class="cards">
+      <cards>
+        <div class="card item-left">
+          <div class="card-icon"><i class="fas fa-traffic-light"></i></div>
+          <h3>Traffic Congestion</h3>
+          <p><strong>Colomobo's peak hour traffic causes hours of delay daily,</strong> but smart traffic sensors can
+            optimize signal timing and improve flow in real time.</p>
+          <div class="card-button">
+            <a href="local_issues.html#traffic"><button>View Problem</button></a>
+            <a href="solutions.html#traffic"><button>View Solution</button></a>
+          </div>
+        </div>
+      </cards>
+      <cards>
+        <div class="card item-right">
+          <div class="card-icon"><i class="fas fa-water"></i></div>
+          <h3>Urban Flooding</h3>
+          <p><strong>Monsoon floods severly disrupt daily life in Colombo,</strong> but smart rain sensors can simulate
+            water levels and alert flood risks before they occur.</p>
+          <div class="card-button">
+            <a href="local_issues.html#flood"><button>View Problem</button></a>
+            <a href="solutions.html#flood"><button>View Solution</button></a>
+          </div>
+        </div>
+      </cards>
+      <cards>
+        <div class="card item-right">
+          <div class="card-icon"><i class="fas fa-trash"></i></div>
+          <h3>Waste Overflow</h3>
+          <p><strong>Overflowing bins and delayed garbage pickup pollute city streets,</strong> but IoT enabled smart
+            bins can alert authorities as soon as they fill up.</p>
+          <div class="card-button">
+            <a href="local_issues.html#waste"><button>View Problem</button></a>
+            <a href="solutions.html#waste"><button>View Solution</button></a>
+          </div>
+        </div>
+      </cards>
+      <cards>
+        <div class="card item-left">
+          <div class="card-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Energy Efficiency</h3>
+          <p><strong>Relying on non-renewable power increases costs and waste,</strong> while smart solar system help
+            homes produce and manage their own clean energy.</p>
+          <div class="card-button">
+            <a href="local_issues.html#energy"><button>View Problem</button></a>
+            <a href="solutions.html#energy"><button>View Solution</button></a>
+          </div>
+        </div>
+      </cards>
+  </section>
+  <section id="feedback-group">
+    <h2>Latest Community Suggestions</h2>
+    <p class="subtitle"><strong>Got a smart solution? </strong>Help us improve Colombo with your own idea!</p>
+    <a href="feedback.html" class="feedback-button">Give Suggestion</a>
+    <div id="feedbacks">
+      <div v-for="(feedback, idx) in feedbacks.slice(-3).reverse()" :key="feedback.id" class="feedback-card">
+        <div class="feedback-card-content">
+          <div class="feedback-header">
+            <p class="feedback-name-date"><span class="feedback-name">{{ feedback.name }}</span> <span
+                class="stroke">|</span> <span class="feedback-date">{{ feedback.date }}</span></p>
+            <button class="like-btn" :class="{ liked: likedFeedbacks[feedback.id] }" @click="toggleLike(feedback.id)">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </div>
+          <div class="feedback-problem">{{ feedback.problem }}</div>
+          <div class="feedback-solution">{{ feedback.solution }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>&copy; 2025 ColomboNext. All Rights Reserved.</p>
+      <span class="footer-divider">|</span>
+      <p>Authored by <strong>Asna Assalam</strong></p>
+    </div>
+  </footer>
+  <script src="assets/js/feedback.js"></script>
+</body>
+
+</html>
