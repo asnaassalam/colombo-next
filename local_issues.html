@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Challenges</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/local_issues.css">
+</head>
+
+<body>
+  <header>
+    <h1>ColomboNext</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="navbar">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="local_issues.html" class="active">Local Issues</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="events.html">Events</a>
+      <a href="feedback.html">Feedback</a>
+    </nav>
+  </header>
+  
+  <div class="intro">
+    <h1>Urban Challenges in Colombo</h1>
+    <p>
+      As Colombo evolves toward a smarter and more sustainable future, it continues to face several pressing urban
+      challenges. Key issues such as traffic congestion, waste overflow, urban flooding, and energy inefficiency
+      significantly impact the lives of residents. This section explores each of these problems in detail, supported by
+      real data and visuals, laying the foundation for smart, technology-driven solutions.
+    </p>
+  </div>
+
+  <section class="traffic" id="traffic">
+    <div class="section">
+      <div class="text">
+        <div class="title">
+          <i class="fas fa-traffic-light"></i>
+          <h2>Traffic Congestion</h2>
+        </div>
+        <p>
+          Colombo, the commercial heart of Sri Lanka, endures heavy traffic congestion daily,  especially during peak hours. With increasing private vehicle usage, limited road spaces, and outdated traffic signal systems, the city struggles to manage the overwhelming flow of vehicles. The result is not just extended commute times, but heightened stress, wasted fuel, and reduced productivity for residents. 
+        <br>
+          In areas like <strong>Wellampitiya</strong>, which connects to central roads such as New Kandy Road, Orugodawatta, and Dematagoda junctions, congestion can bring traffic to a complete standstill, especially near schools and market zones. These delays impact livelihoods, emergency services, and environmental sustainability. Effective management of this challenge is crucial for ensuring Colombo remains a livable, economically thriving city.
+       </p>
+        <div class="solution-button">
+          <a href="solutions.html#traffic">View Solution</a>
+        </div>
+      </div>
+      <div class="visual">
+        <canvas id="trafficChart" width="350" height="300"></canvas>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h4>Avg Delay</h4>
+        <p><span class="count" data-target="1">0</span> hours lost daily in peak congestion.</p>
+      </div>
+      <div class="stat-card">
+        <h4>Vehicle Count</h4>
+        <p><span class="count" data-target="600000">0</span> vehicles enter Colombo city every day.</p>
+      </div>
+      <div class="stat-card">
+        <h4>Signal Sync</h4>
+        <p><span class="count" data-target="22">0</span>% of traffic lights are synchronized.</p>
+      </div>
+      <div class="stat-card">
+        <h4>Fuel Wasted</h4>
+        <p><span class="count" data-target="500000">0</span> liters of fuel are wasted monthly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="flood" id="flood">
+    <div class="section">
+      <div class="visual left">
+        <img src="assets/images/flood-map.png" id="floodChart" width="100%" height="auto">
+      </div>
+      <div class="text right">
+        <div class="title">
+          <i class="fas fa-water"></i>
+          <h2>Urban Flooding</h2>
+        </div>
+        <p>
+          Seasonal monsoons bring intense rain to Colombo, overwhelming the city's outdated drainage infrastructure. Streets and low-lying neighborhoods often become inundated, disrupting mobility, damaging homes, and threatening public health. The economic loss from such flood events is significant, particularly in frequently submerged zones. 
+        <br>
+          In Wellampitiya, where many residential and industrial areas sit at lower elevations, even moderate rainfall can cause knee-deep flooding within hours. Residents are forced to relocate temporarily, schools close, and traffic halts, amplifying the socio-economic burden. Managing urban floods in Colombo, especially in vulnerable suburbs like Wellampitiya, requires smart infrastructure, real-time monitoring, and rapid response systems.
+        </p>
+        <div class="solution-button">
+          <a href="solutions.html#flood">View Solution</a>
+        </div>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h4>Flood-Prone Zones</h4>
+        <p><span class="count" data-target="10">0</span> major Colombo areas are flood hotspots.</p>
+      </div>
+      <div class="stat-card">
+        <h4>Rainfall Peaks</h4>
+        <p><span class="count" data-target="216">0</span> mm rainfall recorded in a single day (recent peak).</p>
+      </div>
+      <div class="stat-card">
+        <h4>Evacuations</h4>
+        <p><span class="count" data-target="7000">0</span>+ residents displaced due to 2024 floods.</p>
+      </div>
+      <div class="stat-card">
+        <h4>Drain Blockages</h4>
+        <p><span class="count" data-target="70">0</span>% of drains clogged during monsoon months.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="waste-management" id="waste">
+    <div class="section">
+      <div class="text">
+        <div class="title">
+          <i class="fas fa-trash"></i>
+          <h2>Waste Overflow</h2>
+        </div>
+        <p>
+          Colombo produces hundreds of tons of waste every day, but inconsistent waste collection and insufficient monitoring lead to overflowing bins and unsanitary public spaces. This affects the urban image and creates breeding grounds for pests and disease. 
+        <br>
+          In busy suburbs like Wellampitiya, where roadside bins near markets or bus stops fill rapidly, delays in collection result in foul odors and garbage spilling into streets. This not only degrades the environment but also poses serious health risks, especially for children and elders. Smart waste management is essential for transforming Colombo into a cleaner, healthier, and more efficient city.
+        </p>
+        <div class="solution-button">
+          <a href="solutions.html#waste">View Solution</a>
+        </div>
+      </div>
+      <div class="visual ">
+        <canvas id="wasteChart" width="400" height="300"></canvas>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h4>Bins Overflowing</h4>
+        <p><span class="count" data-target="290">0</span>+ public bins overflow daily in the city limits.</p>
+      </div>
+      <div class="stat-card">
+        <h4>Plastic Waste</h4>
+        <p><span class="count" data-target="190">0</span> kg of plastic waste generated weekly.</p>
+      </div>
+      <div class="stat-card">
+        <h4>Collection Gaps</h4>
+        <p><span class="count" data-target="30">0</span>% of Colombo areas face irregular garbage pickup.</p>
+      </div>
+      <div class="stat-card">
+        <h4>Landfill Sites</h4>
+        <p>Only <span class="count" data-target="4">0</span> landfills currently serve the whole district.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="energy" id="energy">
+    <div class="section">
+      <div class="visual left">
+        <canvas id="energyChart" width="400" height="300"></canvas>
+      </div>
+      <div class="text right">
+        <div class="title">
+          <i class="fas fa-bolt"></i>
+          <h2>Energy Inefficiency</h2>
+        </div>
+        <p>
+          With rising electricity demand, Colombo faces increasing strain on its non-renewable energy grid. Many homes and businesses operate inefficiently, leading to unnecessary wastage of power and higher carbon footprints. Electricity bills remain a burden for many families, particularly in residential areas with limited awareness of energy-saving practices.
+        <br>
+          In Wellampitiya, densely populated housing clusters often rely on outdated electrical systems, contributing to poor energy efficiency and unnecessary expenses. Adopting renewable energy solutions and real-time consumption monitoring can significantly reduce costs and promote a sustainable lifestyle for Colombo residents.
+        </p>
+        <div class="solution-button">
+          <a href="solutions.html#energy">View Solution</a>
+        </div>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h4>Energy Demand</h4>
+        <p><span class="count" data-target="600">0</span> MW daily electricity demand in Greater Colombo.</p>
+      </div>
+      <div class="stat-card">
+        <h4>Solar Homes</h4>
+        <p>Only <span class="count" data-target="15">0</span>% of households use rooftop solar.</p>
+      </div>
+      <div class="stat-card">
+        <h4>Street Light Waste</h4>
+        <p><span class="count" data-target="40">0</span>% streetlights stay on unnecessarily in daytime.</p>
+      </div>
+      <div class="stat-card">
+        <h4>Power Loss</h4>
+        <p><span class="count" data-target="15">0</span>% average energy loss during distribution.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>&copy; 2025 ColomboNext. All Rights Reserved.</p>
+      <span class="footer-divider">|</span>
+      <p>Authored by <strong>Asna Assalam</strong></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/local_issues.js"></script>
+</body>
+
+</html>
