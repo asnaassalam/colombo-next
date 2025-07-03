@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Community Suggestions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3.0.2"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/feedback.css">
+</head>
+
+<body>
+  <header>
+    <h1>ColomboNext</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="navbar">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="local_issues.html">Local Issues</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="events.html">Events</a>
+      <a href="feedback.html" class="active">Feedback</a>
+    </nav>
+  </header>
+  <div class="intro">
+    <h1>Share Your Smart Ideas</h1>
+    <p>
+      We believe every resident has a role to play in shaping a smarter Colombo. Use this space to share your insights, suggest improvements, or highlight issues that matter to you. Your feedback is invaluable in helping us create a more sustainable and livable city for all.
+    </p>
+  </div>
+  <div id="feedback-group">
+    <div class="top-flex">
+      <div class="feedback-img">
+        <img src="assets/images/form-image.png" alt="Image of a person getting an smart idea.">
+      </div>
+      <div id="feedback-form">
+        <form @submit.prevent="addFeedback">
+          <h2>Drop your Idea</h2>
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" v-model="name" autocomplete="name" @input="clearMessage"
+              placeholder="Enter your name">
+          </div>
+          <div>
+            <label>Problem</label>
+            <div class="problems">
+              <div class="pill-checkbox-group" v-for="(option, idx) in problemOptions" :key="option.value">
+                <input type="radio" :id="option.value" :value="option.label" class="pill-checkbox" name="problems"
+                  v-model="problem" @input="clearMessage">
+                <label :for="option.value" class="pill-label">{{ option.label }}</label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="solution">Solution</label>
+            <textarea id="solution" placeholder="Got a smart solution? Drop it down here." v-model="solution"
+              autocomplete="off" @input="clearMessage"></textarea>
+          </div>
+          <button type="submit" :disabled="submitted" @input="clearMessage">
+            {{ submitted ? 'Submitted' : 'Submit' }}
+          </button>
+          <div v-if="message" :class="['form-message', messageType]">
+            {{ message }}
+          </div>
+        </form>
+      </div>
+    </div>
+    <h2 class="section-title">Community Suggestions</h2>
+    <p class="section-subtitle">See what others are saying and join the conversation. Your feedback helps us make
+      Colombo a better place.</p>
+    <div id="feedbacks">
+      <div v-for="(feedback, idx) in feedbacks.slice().reverse()" :key="feedback.id" class="feedback-card">
+        <div class="icon-bar">
+          <i :class="getProblemIcon(feedback.problem)" class="feedback-icon"></i>
+        </div>
+        <div class="feedback-card-content">
+          <div class="feedback-header">
+            <p class="feedback-name-date"><span class="feedback-name">{{ feedback.name }}</span> <span
+                class="stroke">|</span> <span class="feedback-date">{{ feedback.date
+                }}</span></p>
+            <button class="like-btn" :class="{ liked: likedFeedbacks[feedback.id] }" @click="toggleLike(feedback.id)">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </div>
+          <div class="feedback-problem">{{ feedback.problem }}</div>
+          <div class="feedback-solution">{{ feedback.solution }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>&copy; 2025 ColomboNext. All Rights Reserved.</p>
+      <span class="footer-divider">|</span>
+      <p>Authored by <strong>Asna Assalam</strong></p>
+    </div>
+  </footer>
+  <script src="assets/js/feedback.js"></script>
+</body>
+
+</html>
