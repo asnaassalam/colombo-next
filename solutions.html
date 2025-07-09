@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/solutions.css">
+  <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+
+<body>
+  <header>
+    <h1>ColomboNext</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="navbar">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="local_issues.html">Local Issues</a>
+      <a href="solutions.html" class="active">Solutions</a>
+      <a href="events.html">Events</a>
+      <a href="feedback.html">Feedback</a>
+    </nav>
+  </header>
+
+  <div class="intro">
+    <h1>Innovative Solutions for a Smarter Colombo</h1>
+    <p>
+      Colombo faces critical urban challenges, from overwhelming traffic and waste overflow to flood vulnerability and
+      inefficient energy use. This page introduces smart, sustainable solutions such as AI-powered traffic lights,
+      IoT-enabled waste bins, flood risk monitoring systems, and solar energy optimization tools. Each solution combines
+      technology with urban innovation to build a safer, cleaner, and smarter city for all.
+    </p>
+  </div>
+
+  <section id="traffic">
+    <div class="section">
+      <div class="text">
+        <div class="title">
+          <i class="fas fa-traffic-light"></i>
+          <h2>Traffic Management</h2>
+        </div>
+        <p>
+          Colombo suffers from severe congestion during peak hours, particularly along main roads like Galle Road and
+          Baseline Road. To address this, I propose a <strong>Smart Traffic Management System</strong> powered by AI and
+          IoT technologies. This includes adaptive traffic signals with real-time vehicle detection using cameras and
+          sensors. These devices continuously monitor traffic density and automatically adjust signal timings to
+          minimize delays and avoid unnecessary waiting.
+        </p>
+        <p>
+          Additionally, a centralized control system can analyze traffic data across the city and reroute traffic
+          dynamically in case of accidents or road closures. Integrating real-time commute planning tools can also help
+          users choose the shortest or least congested routes, reducing overall travel time and emissions.
+        </p>
+      </div>
+      <div class="visual">
+        <img src="assets/images/traffic-management.jpg" alt="Traffic Congestion">
+      </div>
+    </div>
+  </section>
+
+  <section id="flood">
+    <div class="section">
+      <div class="visual left">
+        <img src="assets/images/flood-management.png" alt="Smart Flood Management">
+      </div>
+      <div class="text  right">
+        <div class="title">
+          <i class="fas fa-water"></i>
+          <h2>Flood Risk Prevention</h2>
+        </div>
+        <p>
+          Urban flooding is a recurring issue in low-lying areas of Colombo like Wellampitiya, due to poor drainage and
+          unpredictable rainfall. To mitigate this, I propose a <strong>Smart Flood Monitoring System</strong> using
+          water-level sensors, rain gauges, and geospatial mapping. These sensors are placed in key flood-prone zones to
+          track rising water levels and send real-time data to a central dashboard.
+        </p>
+        <p>
+          The system simulates risk levels and provides early warnings via SMS, city apps, or digital signage, enabling
+          faster evacuation and emergency response. Combined with proper drainage planning and predictive analytics,
+          this solution enhances disaster preparedness and helps save lives and infrastructure.
+        </p>
+        <p>
+          To help residents understand flood risks better, this platform includes an interactive Flood Simulator. Users
+          can select a locality (e.g., Wellampitiya) and adjust rainfall levels to visualize how different areas
+          respond, allowing them to grasp the urgency of preventive action.
+        </p>
+      </div>
+    </div>
+    <div class="tool">
+      <div id="floodSimulator" class="simulator-wrapper">
+        <h2>Flood Risk Simulator</h2>
+        <p>
+          Adjust the rainfall slider and select an area to see the estimated flood risk level for different parts of
+          Colombo. This helps visualize how rainfall impacts each neighborhood.
+        </p>
+        <label for="area">Select Area:</label>
+        <select id="area" v-model="selectedArea">
+          <option v-for="(config, area) in areaRiskData" :key="area" :value="area">{{ area }}</option>
+        </select><label for="rain">Rainfall (mm): {{ rainfall }} mm</label>
+        <input type="range" id="rain" min="0" max="200" step="5" v-model="rainfall" />
+        <div class="water-tank">
+          <div class="water" :style="waterStyle"></div>
+        </div>
+        <div class="risk-status" :style="{ color: riskColor }">
+          Risk Level: {{ riskLevel }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="waste">
+    <div class="section">
+      <div class="text">
+        <div class="title">
+          <i class="fas fa-trash"></i>
+          <h2>Smart Waste Management</h2>
+        </div>
+        <p>
+          Overflowing bins and irregular garbage collection remain a major challenge in Colombo, especially in crowded
+          areas like Wellampitiya. To solve this, I propose the use of <strong>IoT-enabled Smart Bins</strong> equipped
+          with ultrasonic sensors that detect the fill level of garbage inside the bin in real-time. Once a bin is
+          90–95% full, the system automatically sends an alert to the municipal collection center. This reduces delays,
+          prevents overflows, and optimizes collection routes based on actual demand.
+        </p>
+        <p>
+          The smart bin system also collects valuable data about waste generation patterns, helping city planners
+          improve logistics and reduce fuel usage. This makes garbage collection more efficient, less labor-intensive,
+          and environmentally friendlier.
+        </p>
+      </div>
+      <div class="visual ">
+        <img src="assets/images/waste-management.webp" alt="Smart Bin">
+      </div>
+    </div>
+  </section>
+
+  <section id="energy">
+    <div class="section">
+      <div class="visual left">
+        <img src="assets/images/energy-management.jpg" alt="Energy Optimization">
+      </div>
+      <div class="text right">
+        <div class="title">
+          <i class="fas fa-bolt"></i>
+          <h2>Smart Energy Optimization</h2>
+        </div>
+        <p>
+          With Colombo’s growing energy demand and rising electricity bills, many households struggle to manage their
+          power use. My proposed solution is a <strong>Smart Solar Energy System</strong> integrated with IoT-based
+          monitoring tools. These tools allow users to track their real-time electricity usage, monitor solar power
+          generation, and store surplus energy efficiently.
+        </p>
+        <p>
+          The system provides detailed insights through a user dashboard showing daily consumption, cost savings, and
+          environmental impact. By encouraging the use of rooftop solar and helping users reduce energy waste, this
+          solution promotes sustainable living while lowering dependency on the grid. An energy usage tracker helps
+          users estimate monthly bills and discover the savings potential of switching to solar.
+        </p>
+        <p>
+          To empower citizens in understanding their personal energy footprint, the platform offers an Energy Tracker –
+          an interactive Energy Usage Calculator. Users can input details like appliance usage and duration to estimate
+          monthly consumption and identify ways to cut down waste and costs. This not only promotes awareness but also
+          encourages sustainable lifestyle changes.
+        </p>
+      </div>
+    </div>
+    <div class="tool">
+      <div id="energy-tracker" class="energy-section">
+        <h2>Smart Energy Usage Tracker</h2>
+        <p>Track how much energy your home appliances consume over time.</p>
+        <form @submit.prevent="addEntry" class="tracker-form">
+          <div class="row">
+            <input type="text" v-model="appliance" placeholder="Appliance (e.g. Fan)" required />
+            <input type="number" v-model.number="wattage" placeholder="Wattage (W)" required />
+          </div>
+          <div class="row">
+            <input type="number" v-model.number="hours" placeholder="Hours/day" required />
+            <input type="number" v-model.number="days" placeholder="Number of days" required />
+          </div>
+          <button type="submit">Add Appliance</button>
+        </form>
+        <div v-if="entries.length" class="tracker-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Appliance</th>
+                <th>kWh</th>
+                <th>Cost (LKR)</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(entry, index) in entries" :key="index">
+                <td>{{ entry.appliance }}</td>
+                <td>{{ entry.kwh.toFixed(2) }}</td>
+                <td>{{ perApplianceCosts[index].toFixed(2) }}</td>
+                <td><button @click="removeEntry(index)"><i class="fa fa-trash"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="totals">
+            <strong>Total Usage:</strong> {{ totalKWh.toFixed(2) }} kWh |
+            <strong>Fixed Charge:</strong> Rs. {{ fixedCharge.toFixed(2) }} |
+            <strong>Total Cost:</strong> Rs. {{ totalCost.toFixed(2) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>&copy; 2025 ColomboNext. All Rights Reserved.</p>
+      <span class="footer-divider">|</span>
+      <p>Authored by <strong>Asna Assalam</strong></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/solutions.js"></script>
+</body>
+
+</html>
