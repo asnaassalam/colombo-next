@@ -33,7 +33,7 @@
 ## 📂 Folder Structure
 
 ```bash
-smart-colombo/
+colombo-next/
 ├── assets/
 │   ├── css/
 │   │   ├── events.css
